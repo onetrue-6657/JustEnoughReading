@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just Enough Reading</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div id="startMenu">
+        <h1>Just Enough Reading</h1>
+        <p>Welcome to Just Enough Reading Chrome plugin!</p>
+        <button id="actionButton">Click Me to Start!</button>
+    </div>
+
+    <div id="readingMenu">
+        <h1>Too Long? Didn't Read!</h1>
+        <img src="/assets/conclude_button.png" id="concludeButton" alt="icon">
+        <p>Click to Conclude!</p>
+
+        <div id="moreFeatures">
+            <button>Translate</button>
+            <button>Analyze</button>
+            <button>Review</button>
+            <button><!--TODO: Maybe more buttons?--></button> 
+        </div>
+    </div>
+
+    <div id="concludingProcess">
+        <h1>TLDR!</h1>
+        <!--TODO: Make an animation here for the thinking or concluding page.-->
+        <p>Concluding...</p>
+    </div>
+
+    <div id="concludedMenu">
+        <h1>About this Page</h1>
+        <div id="concludedContent"><!--TODO: Contents AI generates will be inserted here!--></div>
+
+        <div id="targetLengthContainer">
+            <label for="targetLength">Target Length (words): </label>
+            <input type="range" id="targetLength" min="50" max="1000" value="500">
+            <span id="targetLengthValue">500</span>
+        </div>
+
+        <div id="translateConclusion">
+            <h2>Translate</h2>
+            <p>Translate to: 
+                <select id="translateTo">
+                    <option value="en">English</option>
+                    <option value="zh">简体中文</option>
+                    <option value="ja">日本語</option>
+                    <option value="es">Español</option>
+                    <option value="fr">Français</option>
+                    <option value="de">Deutsch</option>
+                </select>
+            </p>
+            <button>Translate</button>
+        </div>
+
+        <div id="concludedMenuButtons">
+            <button id="backButton">Back</button>
+            <button id="tryAgainButton">Try Again</button>
+            <!-- TODO: No idea whether we need a share feature. <button id="shareButton">Share</button> -->
+        </div>
+    </div>
+
+    <div id="translatingPage">
+        <h1>JustEnoughReading</h1>
+        <!--TODO: Make an animation here for the thinking or concluding page.-->
+        <p>Translating to <span id="translatingTo">English</span>...</p>
+    </div>
+
+    <div id="translatedPage">
+        <h1>JustEnoughReading</h1>
+        <!--TODO: Add an icon here to show that the process has been completed ✅.-->
+        <p>Translated to <span id="translatedTo">English</span>:</p>
+        <button id="backButton">Back</button>
+    </div>
+
+    <div id="reviewAnalysisPage">
+        <h1>About this Product</h1>
+        <div id="reviewAnalysisContent"><!--TODO: Contents AI generates will be inserted here!--></div>
+        <div id="sentimentContainer">
+            <label for="sentimentSlider">Sentiment:</label>
+            <input type="range" id="sentimentSlider" min="-100" max="100" value="0">
+            <div id="emojiDisplay">😐</div>
+            <div class="sentimentLabels">
+                <span>Negative</span>
+                <span>Neutral</span>
+                <span>Positive</span>
+            </div>
+        </div>
+        <div id="translateConclusion">
+            <h2>Translate</h2>
+            <p>Translate to: 
+                <select id="translateTo">
+                    <option value="en">English</option>
+                    <option value="zh">简体中文</option>
+                    <option value="ja">日本語</option>
+                    <option value="es">Español</option>
+                    <option value="fr">Français</option>
+                    <option value="de">Deutsch</option>
+                </select>
+            </p>
+            <button>Translate</button>
+        </div>
+
+        <div id="concludedMenuButtons">
+            <button id="backButton">Back</button>
+            <button id="tryAgainButton">Try Again</button>
+            <!-- TODO: No idea whether we need a share feature. <button id="shareButton">Share</button> -->
+        </div>
+    </div>
+
+    <p id="copyright">For OSU HackAI 2025. Copyright &copy; 2025 JustEnoughReading</p>
+
+    <script src="popup.js"></script>
+</body>
+</html>
