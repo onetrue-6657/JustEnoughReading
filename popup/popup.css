@@ -1,0 +1,230 @@
+/* General Settings */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  background-color: #000000;
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+h2 {
+  font-size: 1.6rem;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+p,
+label,
+span {
+  margin-bottom: 10px;
+  color: #fff;
+  font-size: 1rem;
+}
+
+button {
+  width: var(--custom-button-width, auto);
+  padding: 8px;
+  font-family: "Poppins", sans-serif;
+  background-color: #ba0c2f;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  margin-top: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover,
+select:hover {
+  background-color: #a6001d;
+  transform: scale(1.05);
+}
+
+select {
+  padding: 12px 15px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  margin-top: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  background-color: #a7b1b7;
+}
+
+/* Start Menu */
+#startMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  background-color: #040426;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#startMenu img {
+  width: 150px;
+  height: auto;
+  margin: 20px 0;
+}
+
+/* Reading Menu */
+#readingMenu {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #040426;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#readingMenu img {
+  width: 100px;
+  height: auto;
+  margin: 10px 0;
+}
+
+#readingMenu button {
+  width: 150%;
+}
+
+#moreFeatures {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Concluding Process */
+#concludingProcess {
+  text-align: center;
+  padding: 20px;
+  background-color: #040426;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+/* Conclusion Menu */
+#concludedMenu {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #040426;
+  border-radius: 8px;
+  margin: 20px auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#translateConclusion button {
+  width: 100%;
+}
+
+#concludedMenuButtons button {
+  width: 100%;
+}
+
+/* Container */
+#targetLengthContainer {
+  margin: 15px 0;
+  text-align: center;
+}
+
+#targetLength {
+  width: 80%;
+  margin: 10px 0;
+}
+
+/* Translate */
+#translateConclusion {
+  margin: 20px 0;
+  text-align: center;
+}
+
+#translateConclusion select {
+  padding: 5px;
+  margin-left: 5px;
+}
+
+/* Sentiment Evaluation Container */
+#sentimentContainer {
+  width: 80%;
+  max-width: 400px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+#sentimentContainer label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+#sentimentSlider {
+  width: 100%;
+  margin: 10px 0;
+}
+
+#emojiDisplay {
+  font-size: 2rem;
+  margin: 10px 0;
+}
+
+.sentimentLabels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+/* Translating Pgae */
+#translatingPage,
+#translatedPage,
+#reviewAnalysisPage {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #040426;
+  border-radius: 8px;
+  margin: 20px auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#translatedPage button {
+  width: 100%;
+}
+
+/* Copyright */
+#copyright {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.8rem;
+  color: #777;
+}

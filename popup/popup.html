@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en-US">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +10,7 @@
     <div id="startMenu">
         <h1>Just Enough Reading</h1>
         <p>Welcome to Just Enough Reading Chrome plugin!</p>
+        <img src="/assets/JER.png" id="logo" alt="logo">
         <button id="actionButton">Click Me to Start!</button>
     </div>
 
@@ -22,7 +23,7 @@
             <button>Translate</button>
             <button>Analyze</button>
             <button>Review</button>
-            <button><!--TODO: Maybe more buttons?--></button> 
+            <!--TODO: Maybe more buttons?-->
         </div>
     </div>
 
@@ -43,7 +44,6 @@
         </div>
 
         <div id="translateConclusion">
-            <h2>Translate</h2>
             <p>Translate to: 
                 <select id="translateTo">
                     <option value="en">English</option>
@@ -74,7 +74,10 @@
         <h1>JustEnoughReading</h1>
         <!--TODO: Add an icon here to show that the process has been completed ✅.-->
         <p>Translated to <span id="translatedTo">English</span>:</p>
-        <button id="backButton">Back</button>
+        <div id="translatedButtons">
+            <button id="switchButton">Switch to Original</button>
+            <button id="backButton">Back</button>
+        </div>
     </div>
 
     <div id="reviewAnalysisPage">
