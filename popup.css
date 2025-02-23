@@ -21,11 +21,11 @@ body {
   color: #333;
   line-height: 1.6;
   padding: 20px;
-  width: 400px;
+  width: 500px;
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: #fff;
   margin-bottom: 8px;
 }
@@ -34,6 +34,12 @@ h2 {
   font-size: 1.6rem;
   color: #fff;
   margin-bottom: 8px;
+}
+
+#copyright {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #777;
 }
 
 p,
@@ -299,34 +305,45 @@ select {
   margin: 20px auto;
 }
 
-/* 打字机文本框的整体样式 */
 .typewriter {
-  font-family: "Courier New", Courier, monospace; /* 等宽字体 */
-  font-size: 16px; /* 字体大小可根据需要调整 */
-  color: #fff; /* 文字颜色 */
-  background-color: #000; /* 背景色 */
-  padding: 20px; /* 内边距，保证文字不贴边 */
-  border: 2px solid #333; /* 边框，可营造复古机台风格 */
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16px;
+  line-height: 1.2;
+  color: #fff;
+  background-color: #000;
+  padding: 20px;
+  border: 2px solid #333;
   width: 90%;
-  max-width: 600px; /* 最大宽度 */
-  margin: 20px auto; /* 居中显示 */
-  white-space: pre-wrap; /* 支持换行 */
+  max-width: 600px;
+  height: 45px;
+  margin: 20px auto;
   position: relative;
-  overflow: hidden; /* 防止溢出 */
+  overflow: hidden;
 }
 
-/* 添加一个模拟打字机光标的闪烁效果 */
+.typewriter p {
+  margin: 0;
+  line-height: 1.2;
+}
+
+.typewriter-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
 .typewriter::after {
-  content: ""; /* 空内容，用于显示光标 */
+  content: "";
   display: inline-block;
-  width: 10px; /* 光标宽度 */
-  height: 1em; /* 光标高度与文字行高一致 */
-  background-color: currentColor; /* 与文字颜色一致 */
+  width: 10px;
+  height: 1em;
+  background-color: currentColor;
   margin-left: 5px;
-  animation: blink 1s step-end infinite; /* 无限循环闪烁动画 */
+  vertical-align: bottom;
+  animation: blink 1s step-end infinite;
 }
 
-/* 闪烁动画关键帧 */
 @keyframes blink {
   0%,
   50% {
@@ -348,6 +365,19 @@ select {
   border-radius: 8px;
   margin: 20px auto;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#concludedContent {
+  font-size: 16px;
+  color: #fff;
+  background-color: #01011c;
+  padding: 20px;
+  border: 2px solid #3fa4e1;
+  width: 95%;
+  margin: 20px auto;
+  white-space: normal;
+  position: relative;
+  overflow: hidden;
 }
 
 #translateConclusion button {

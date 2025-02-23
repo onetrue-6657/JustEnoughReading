@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- GSAP & TextPlugin -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/TextPlugin.min.js"></script>
     <title>Just Enough Reading</title>
     <link rel="stylesheet" href="popup.css">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/TextPlugin.min.js"></script>
 </head>
 <body>
     <div id="startMenu">
         <h1>Just Enough Reading</h1>
         <p>Welcome to Just Enough Reading Chrome plugin!</p>
         <img src="/assets/JER.png" id="logo" alt="logo">
-        <button id="actionButton">Click Me to Start!</button>
+        <button id="actionButton">Start!</button>
         <p id="copyright">For OSU HackAI 2025. Copyright &copy; 2025 JustEnoughReading</p>
     </div>
 
@@ -52,17 +51,18 @@
     </div>
 
     <div id="concludingProcess">
-        <h1>TLDR!</h1>
-        <div class="typewriter"></div>
-        <!--TODO: Make an animation here for the thinking or concluding page.-->
+        <h1>TL; DR!</h1>
+        <div class="typewriter">
+            <div class="typewriter-content"></div>
+        </div>
         <p>Concluding...</p>
         <p id="copyright">For OSU HackAI 2025. Copyright &copy; 2025 JustEnoughReading</p>
     </div>
 
     <!--Shared by Analyze button and Review button-->
     <div id="analyzingProcess">
-        <h1>TLDR!</h1>
-        <!--TODO: Make an animation here for the thinking or concluding page.-->
+        <h1>TL; DR!</h1>
+        <div class="typewriter"></div>
         <p>Analyzing...</p>
         <p id="copyright">For OSU HackAI 2025. Copyright &copy; 2025 JustEnoughReading</p>
     </div>
@@ -70,15 +70,14 @@
     <!--Shared by Analyze result and Conclude result-->
     <div id="concludedMenu">
         <h1>About this Page</h1>
-        <div id="concludedContent"><!--TODO: Contents AI generates will be inserted here!--></div>
-
+        <div id="concludedContent"></div>
         <div id="targetLengthContainer">
-            <label for="targetLength">Target Length (words): </label>
+            <label for="targetLength">Target Length (Max word counts): </label>
             <input type="range" id="targetLength" min="50" max="1000" value="500">
             <span id="targetLengthValue">500</span>
         </div>
 
-        <div id="translateConclusion">
+        <!-- <div id="translateConclusion">
             <p>Translate to: 
                 <select id="translateTo">
                     <option value="en">English</option>
@@ -90,11 +89,11 @@
                 </select>
             </p>
             <button>Translate</button>
-        </div>
+        </div> -->
 
         <div id="concludedMenuButtons">
-            <button id="backButton">Back</button>
             <button id="tryAgainButton">Try Again</button>
+            <button id="backButton">Back</button>
             <!-- TODO: No idea whether we need a share feature. <button id="shareButton">Share</button> -->
         </div>
         <p id="copyright">For OSU HackAI 2025. Copyright &copy; 2025 JustEnoughReading</p>
@@ -133,7 +132,7 @@
                 If possible change the container icon to emoji.-->
             </div>
         </div>
-        <div id="translateConclusion">
+        <!-- <div id="translateConclusion">
             <h2>Translate</h2>
             <p>Translate to: 
                 <select id="translateTo">
@@ -146,12 +145,11 @@
                 </select>
             </p>
             <button>Translate</button>
-            <p id="copyright">For OSU HackAI 2025. Copyright &copy; 2025 JustEnoughReading</p>
-        </div>
+        </div> -->
 
         <div id="concludedMenuButtons">
-            <button id="backButton">Back</button>
             <button id="tryAgainButton">Try Again</button>
+            <button id="backButton">Back</button>
             <!-- TODO: No idea whether we need a share feature. <button id="shareButton">Share</button> -->
             <p id="copyright">For OSU HackAI 2025. Copyright &copy; 2025 JustEnoughReading</p>
         </div>
