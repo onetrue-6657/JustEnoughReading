@@ -111,10 +111,124 @@
     // Send original and new language values to Flask server.
     // TODO - TranslateOptionsPage => TranslatedPage
     const translatePageButton = document.getElementById("translatePageButton");
+    if (translatePageButton) {
+      translatePageButton.addEventListener("click", async function () {
+        showPage("translatingProcess");
+
+        let [tab] = await chrome.tabs.query({
+          active: true,
+          currentWindow: true,
+        });
+        if (!tab || !tab.url) {
+          alert("Not able to access URL of current page.");
+          return;
+        }
+
+        // 发送请求到 Flask 服务器
+        try {
+          const response = await fetch(
+            "http://64.227.2.159:8001/crawl_and_summarize",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                url: tab.url,
+                originalLanguage: originalLanguage,
+                newLanguage: newLanguage,
+              }),
+            }
+          ); // We are going to suggest GPT to generate a new summary within the targeted length range.
+
+          const data = await response.json();
+
+          if (data.error) {
+            document.getElementById(
+              "concludedContent"
+            ).innerHTML = `<p style="color:red">❌ Error: ${data.error}</p>`;
+          } else {
+            document.getElementById("concludedContent").innerHTML = `
+                      <h2>${data.title}</h2>
+                      <p><strong>Main Topics:</strong> ${data.main_topics.join(
+                        ", "
+                      )}</p>
+                      <p><strong>Summary:</strong> ${data.summary}</p>
+                      <p><strong>Key Facts:</strong></p>
+                      <ul>${data.key_facts
+                        .map((fact) => `<li>${fact}</li>`)
+                        .join("")}</ul>
+                    `;
+          } // TODO: Language change here?
+        } catch (error) {
+          document.getElementById(
+            "concludedContent"
+          ).innerHTML = `<p style="color:red">❌ Request Failed: ${error}</p>`;
+        }
+
+        // 显示总结页面
+        showPage("translatedPage");
+      });
+    }
 
     // Send original and new language values to Flask server.
     // TODO - TranslatedPage => TranslatingProcess => TranslatedPage (Original)
     const switchButton = document.getElementById("switchButton");
+    if (translatePageButton) {
+      translatePageButton.addEventListener("click", async function () {
+        showPage("translatingProcess");
+
+        et[tab] = await chrome.tabs.query({
+          active: true,
+          currentWindow: true,
+        });
+        if (!tab || !tab.url) {
+          alert("Not able to access URL of current page.");
+          return;
+        }
+
+        // 发送请求到 Flask 服务器
+        try {
+          const response = await fetch(
+            "http://64.227.2.159:8001/crawl_and_summarize",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                url: tab.url,
+                originalLanguage: originalLanguage,
+                newLanguage: newLanguage,
+              }),
+            }
+          ); // We are going to suggest GPT to generate a new summary within the targeted length range.
+
+          const data = await response.json();
+
+          if (data.error) {
+            document.getElementById(
+              "concludedContent"
+            ).innerHTML = `<p style="color:red">❌ Error: ${data.error}</p>`;
+          } else {
+            document.getElementById("concludedContent").innerHTML = `
+                      <h2>${data.title}</h2>
+                      <p><strong>Main Topics:</strong> ${data.main_topics.join(
+                        ", "
+                      )}</p>
+                      <p><strong>Summary:</strong> ${data.summary}</p>
+                      <p><strong>Key Facts:</strong></p>
+                      <ul>${data.key_facts
+                        .map((fact) => `<li>${fact}</li>`)
+                        .join("")}</ul>
+                    `;
+          } // TODO: Language change here?
+        } catch (error) {
+          document.getElementById(
+            "concludedContent"
+          ).innerHTML = `<p style="color:red">❌ Request Failed: ${error}</p>`;
+        }
+
+        // 显示总结页面
+        showPage("translatedPage");
+      });
+    }
 
     // ✅ MainMenu => deepAnalysisPromptPage
     const analysisButton = document.getElementById("analysisButton");

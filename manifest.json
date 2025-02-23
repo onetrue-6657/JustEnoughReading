@@ -11,8 +11,8 @@
         "default_popup": "popup.html"
     },
     "icons": {
-    "128": "assets/icon-128.png",
-    "256": "assets/icon-256.png",
-    "512": "assets/icon-512.png"
+    "128": "assets/128x128.png",
+    "256": "assets/256x256.png",
+    "512": "assets/512x512.png"
     }
 }
