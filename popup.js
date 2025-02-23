@@ -31,34 +31,57 @@
 
     const concludeButton = document.getElementById("concludeButton");
     if (concludeButton) {
-      concludeButton.addEventListener("click", function () {
+      concludeButton.addEventListener("click", async function () {
         showPage("concludingProcess");
-        setTimeout(function () {
-          showPage("concludedMenu");
-        }, 15000);
-      });
-    }
 
-    const conclusionTranslateButton = document.querySelector(
-      "#translateConclusion button"
-    );
-    if (conclusionTranslateButton) {
-      conclusionTranslateButton.addEventListener("click", function () {
-        showPage("translatingPage");
-        // TODO: After translation has been processed it will show the translated page.
-        setTimeout(function () {
-          showPage("concludedMenu");
-        }, 2000);
-      });
-    }
+        // 获取当前 Tab 的 URL
+        let [tab] = await chrome.tabs.query({
+          active: true,
+          currentWindow: true,
+        });
+        if (!tab || !tab.url) {
+          alert("无法获取当前页面 URL");
+          return;
+        }
 
-    const translateButton = document.getElementById("translateButton");
-    if (translateButton) {
-      translateButton.addEventListener("click", function () {
-        showPage("translatingPage");
-        setTimeout(function () {
-          showPage("translatedPage");
-        }, 2000);
+        // 发送请求到 Flask 服务器
+        try {
+          const response = await fetch(
+            "http://127.0.0.1:5001/crawl_and_summarize",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ url: tab.url }),
+            }
+          );
+
+          const data = await response.json();
+
+          if (data.error) {
+            document.getElementById(
+              "concludedContent"
+            ).innerHTML = `<p style="color:red">❌ 错误: ${data.error}</p>`;
+          } else {
+            document.getElementById("concludedContent").innerHTML = `
+                <h2>${data.title}</h2>
+                <p><strong>Main Topics:</strong> ${data.main_topics.join(
+                  ", "
+                )}</p>
+                <p><strong>Summary:</strong> ${data.summary}</p>
+                <p><strong>Key Facts:</strong></p>
+                <ul>${data.key_facts
+                  .map((fact) => `<li>${fact}</li>`)
+                  .join("")}</ul>
+              `;
+          }
+        } catch (error) {
+          document.getElementById(
+            "concludedContent"
+          ).innerHTML = `<p style="color:red">❌ 请求失败: ${error}</p>`;
+        }
+
+        // 显示总结页面
+        showPage("concludedMenu");
       });
     }
 
