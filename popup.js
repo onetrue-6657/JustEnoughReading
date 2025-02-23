@@ -47,6 +47,7 @@
     if (concludeButton) {
       concludeButton.addEventListener("click", async function () {
         showPage("analyzingProcess");
+        setTimeout(startRandomText, 100);
 
         // 获取当前 Tab 的 URL
         let [tab] = await chrome.tabs.query({
@@ -136,6 +137,7 @@
     if (refreshButton) {
       refreshButton.addEventListener("click", async function () {
         showPage("analyzingProcess");
+        setTimeout(startRandomText, 100);
 
         const suggestedLength = Number(
           document.getElementById("targetLengthValue").textContent
@@ -274,7 +276,7 @@
     const analyzeButton = document.getElementById("analyzeButton");
     const analyzePrompt = document.getElementById("analysisPrompt").value;
     if (analyzeButton) {
-      translateSummaryButton.addEventListener("click", async function () {
+      analyzeButton.addEventListener("click", async function () {
         showPage("analyzingProcess");
 
         let [tab] = await chrome.tabs.query({
@@ -330,66 +332,47 @@
       });
     }
 
-    gsap.registerPlugin(TextPlugin);
+    function startRandomText() {
+      const container = document.querySelector(
+        "#analyzingProcess .typewriter-content"
+      );
+      const lines = [
+        "Warming up RTX5090...",
+        "Booting up neural networks...",
+        "Deploying quantum entanglement...",
+        "Shimmying with the tragic little rectangle...",
+        "Building a s**t Alps...",
+        "Running sudo make it work...",
+        "Dividing by zero...",
+        "git push -f -f --force -ffffff...",
+        "Loading OSU Components...",
+        "Hacking General Kim's ETH wallet...",
+        "Making a perpetual motion machine...",
+        "Going to Buckeye's game...",
+        "Git conflict...",
+        "Walking to lower.com field...",
+        "Waking up sleeping servers...",
+        "Overclocking your CPU with flair...",
+        "Synthesizing digital miracles...",
+        "Spinning up parallel universes...",
+        "Unleashing rogue algorithms...",
+        "Encrypting laughter bytes...",
+        "Debugging the fabric of reality...",
+        "Initiating the ultimate hackathon...",
+      ];
 
-    const lines = [
-      "Warming up RTX5090...",
-      "Booting up neural networks...",
-      "Deploying quantum entanglement...",
-      "Shimmying with the tragic little rectangle...",
-      "Building a s**t Alps...",
-      "Running sudo make it work...",
-      "Dividing by zero...",
-      "git push -f -f --force -ffffff...",
-      "Loading OSU Components...",
-      "Hacking General Kim's ETH wallet...",
-      "Making a perpetual motion machine...",
-      "Going to Buckeye's game...",
-      "Git conflict...",
-      "Walking to lower.com field...",
-      "Waking up sleeping servers...",
-      "Overclocking your CPU with flair...",
-      "Synthesizing digital miracles...",
-      "Spinning up parallel universes...",
-      "Unleashing rogue algorithms...",
-      "Encrypting laughter bytes...",
-      "Debugging the fabric of reality...",
-      "Initiating the ultimate hackathon...",
-    ];
-
-    function getRandomMessage(arr) {
-      const index = Math.floor(Math.random() * arr.length);
-      return arr.splice(index, 1)[0];
-    }
-
-    const contentEl = document.querySelector(".typewriter-content");
-    const tl = gsap.timeline();
-
-    while (lines.length > 0) {
-      const text = getRandomMessage(lines);
-      const p = document.createElement("p");
-      p.style.margin = "0";
-      p.style.padding = "0";
-      p.textContent = "";
-      contentEl.appendChild(p);
-
-      tl.to(p, {
-        duration: 1.5,
-        text: text,
-        ease: "none",
-      });
-      tl.to({}, { duration: 2 });
-
-      if (lines.length > 0) {
-        tl.call(() => {
-          const height = p.offsetHeight;
-          gsap.to(contentEl, {
-            duration: 0.5,
-            y: `-=${height}`,
-            ease: "power1.inOut",
-          });
-        });
+      function displayRandomLine() {
+        container.style.transition = "opacity 0.5s ease";
+        container.style.opacity = "0";
+        setTimeout(() => {
+          const randomIndex = Math.floor(Math.random() * lines.length);
+          container.textContent = lines[randomIndex];
+          container.style.opacity = "1";
+        }, 500);
       }
+
+      displayRandomLine();
+      setInterval(displayRandomLine, 2000);
     }
   });
 })();
