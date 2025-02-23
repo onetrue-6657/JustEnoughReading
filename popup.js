@@ -43,7 +43,7 @@
   
           // 发送请求到 Flask 服务器
           try {
-            const response = await fetch("http://127.0.0.1:5001/crawl_and_summarize", {
+            const response = await fetch("http://64.227.2.159:8001/crawl_and_summarize", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ url: tab.url })
