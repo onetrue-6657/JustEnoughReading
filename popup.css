@@ -119,48 +119,168 @@ select {
   width: 100px;
   height: auto;
   margin: 10px 0;
-  background-color: #ffffff;
-  transition: background-color 0.3s ease;
+  /* background-color: #ffffff; */
+  transition: background-color 0.3s ease, transform 0.2s ease;
   border-radius: 20px;
   cursor: pointer;
 }
 
+#readingMenu p {
+  font-weight: 600;
+}
+
 #readingMenu img:hover {
-  background-color: #5e5c5c;
+  transform: scale(1.05);
 }
 
 #readingMenu button {
   width: 150%;
 }
 
-#moreFeatures {
+#buttonContainer {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+/* #moreFeatures {
   display: flex;
   flex-direction: column;
   align-items: center;
+} */
+
+#concludeButtonContainer {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  line-height: 0;
+}
+
+#concludeButton {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  transition: all 0.5s ease;
+  display: inline-block;
+  line-height: 0;
+}
+
+#concludeButton::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(0deg, transparent, transparent 30%, #57058c);
+  transform: rotate(-45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+#concludeButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #57058c;
+}
+
+#concludeButton:hover::before {
+  opacity: 1;
+  transform: rotate(-45deg) translateY(100%);
+}
+
+#concludeButton img {
+  display: block;
+}
+
+#translateButtonContainer {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  line-height: 0;
 }
 
 #translateButton {
-  background-color: #57058c;
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  transition: all 0.5s ease;
+  line-height: 0;
+  box-sizing: border-box;
+}
+
+#translateButton::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(0deg, transparent, transparent 30%, #ba0c2f);
+  transform: rotate(-45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
 }
 
 #translateButton:hover {
-  background-color: #290342;
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #ba0c2f;
 }
 
-#analyzeButton {
-  background-color: #ba0c2f;
+#translateButton:hover::before {
+  opacity: 1;
+  transform: rotate(-45deg) translateY(100%);
 }
 
-#analyzeButton:hover {
-  background-color: #7a0017;
+#translateButton img {
+  display: block;
+  padding: 10px;
 }
 
-#reviewButton {
-  background-color: #ff5f05;
+#analysisButtonContainer {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  line-height: 0;
 }
 
-#reviewButton:hover {
-  background-color: #6b250a;
+#analysisButton {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  transition: all 0.5s ease;
+  line-height: 0;
+  box-sizing: border-box;
+}
+
+#analysisButton::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(0deg, transparent, transparent 30%, #ff5f05);
+  transform: rotate(-45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+#analysisButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #ff5f05;
+}
+
+#analysisButton:hover::before {
+  opacity: 1;
+  transform: rotate(-45deg) translateY(100%);
+}
+
+#analysisButton img {
+  display: block;
+  padding: 10px;
 }
 
 /* Concluding Process and Analyzing Process */
@@ -177,6 +297,45 @@ select {
   width: 80%;
   max-width: 400px;
   margin: 20px auto;
+}
+
+/* 打字机文本框的整体样式 */
+.typewriter {
+  font-family: "Courier New", Courier, monospace; /* 等宽字体 */
+  font-size: 16px; /* 字体大小可根据需要调整 */
+  color: #fff; /* 文字颜色 */
+  background-color: #000; /* 背景色 */
+  padding: 20px; /* 内边距，保证文字不贴边 */
+  border: 2px solid #333; /* 边框，可营造复古机台风格 */
+  width: 90%;
+  max-width: 600px; /* 最大宽度 */
+  margin: 20px auto; /* 居中显示 */
+  white-space: pre-wrap; /* 支持换行 */
+  position: relative;
+  overflow: hidden; /* 防止溢出 */
+}
+
+/* 添加一个模拟打字机光标的闪烁效果 */
+.typewriter::after {
+  content: ""; /* 空内容，用于显示光标 */
+  display: inline-block;
+  width: 10px; /* 光标宽度 */
+  height: 1em; /* 光标高度与文字行高一致 */
+  background-color: currentColor; /* 与文字颜色一致 */
+  margin-left: 5px;
+  animation: blink 1s step-end infinite; /* 无限循环闪烁动画 */
+}
+
+/* 闪烁动画关键帧 */
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
 }
 
 /* Conclusion Menu */

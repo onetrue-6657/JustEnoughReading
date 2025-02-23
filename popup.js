@@ -46,64 +46,72 @@
             const response = await fetch("http://64.227.2.159:8001/crawl_and_summarize", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ url: tab.url })
-            });
-  
-            const data = await response.json();
-  
-            if (data.error) {
-              document.getElementById("concludedContent").innerHTML = `<p style="color:red">❌ 错误: ${data.error}</p>`;
-            } else {
-              document.getElementById("concludedContent").innerHTML = `
+              body: JSON.stringify({ url: tab.url }),
+            }
+          );
+
+          const data = await response.json();
+
+          if (data.error) {
+            document.getElementById(
+              "concludedContent"
+            ).innerHTML = `<p style="color:red">❌ 错误: ${data.error}</p>`;
+          } else {
+            document.getElementById("concludedContent").innerHTML = `
                 <h2>${data.title}</h2>
-                <p><strong>Main Topics:</strong> ${data.main_topics.join(", ")}</p>
+                <p><strong>Main Topics:</strong> ${data.main_topics.join(
+                  ", "
+                )}</p>
                 <p><strong>Summary:</strong> ${data.summary}</p>
                 <p><strong>Key Facts:</strong></p>
-                <ul>${data.key_facts.map(fact => `<li>${fact}</li>`).join("")}</ul>
+                <ul>${data.key_facts
+                  .map((fact) => `<li>${fact}</li>`)
+                  .join("")}</ul>
               `;
-            }
-          } catch (error) {
-            document.getElementById("concludedContent").innerHTML = `<p style="color:red">❌ 请求失败: ${error}</p>`;
           }
-  
-          // 显示总结页面
-          showPage("concludedMenu");
-        });
-      }
-  
-      const analyzeButton = document.getElementById("analyzeButton");
-      if (analyzeButton) {
-        analyzeButton.addEventListener("click", function () {
-          showPage("analyzingProcess");
-          setTimeout(function () {
-            showPage("concludedMenu");
-          }, 2000);
-        });
-      }
-  
-      const reviewButton = document.getElementById("reviewButton");
-      if (reviewButton) {
-        reviewButton.addEventListener("click", function () {
-          showPage("analyzingProcess");
-          setTimeout(function () {
-            showPage("reviewAnalysisPage");
-          }, 2000);
-        });
-      }
-  
-      const backButtons = document.querySelectorAll("#backButton");
-      backButtons.forEach(function (button) {
-        button.addEventListener("click", function () {
-          showPage("readingMenu");
-        });
+        } catch (error) {
+          document.getElementById(
+            "concludedContent"
+          ).innerHTML = `<p style="color:red">❌ 请求失败: ${error}</p>`;
+        }
+
+        // 显示总结页面
+        showPage("concludedMenu");
       });
-  
-      const tryAgainButton = document.getElementById("tryAgainButton");
-      if (tryAgainButton) {
-        tryAgainButton.addEventListener("click", function () {
+    }
+
+    const analyzeButton = document.getElementById("analyzeButton");
+    if (analyzeButton) {
+      analyzeButton.addEventListener("click", function () {
+        showPage("analyzingProcess");
+        setTimeout(function () {
           showPage("concludedMenu");
-        });
-      }
+        }, 2000);
+      });
+    }
+
+    const reviewButton = document.getElementById("reviewButton");
+    if (reviewButton) {
+      reviewButton.addEventListener("click", function () {
+        showPage("analyzingProcess");
+        setTimeout(function () {
+          showPage("reviewAnalysisPage");
+        }, 2000);
+      });
+    }
+
+    const backButtons = document.querySelectorAll("#backButton");
+    backButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        showPage("readingMenu");
+      });
     });
-  })();
-  
+
+    const tryAgainButton = document.getElementById("tryAgainButton");
+    if (tryAgainButton) {
+      tryAgainButton.addEventListener("click", function () {
+        showPage("concludedMenu");
+      });
+    }
+  });
+})();

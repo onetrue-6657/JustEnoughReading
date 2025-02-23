@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- GSAP & TextPlugin -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/TextPlugin.min.js"></script>
     <title>Just Enough Reading</title>
     <link rel="stylesheet" href="popup.css">
 </head>
@@ -17,20 +20,40 @@
 
     <div id="readingMenu">
         <h1>Too Long? Didn't Read!</h1>
-        <img src="/assets/conclude_button.png" id="concludeButton" alt="icon">
-        <p>Click to Conclude!</p>
+        <div id="buttonContainer">
+            <div id="concludeContainer">
+                <div id="concludeButtonContainer">
+                    <div id="concludeButton">
+                    <img src="/assets/conclude.png" alt="icon">
+                    </div>
+                </div>
+                <p>Conclude</p>
+            </div>
 
-        <div id="moreFeatures">
-            <button id="translateButton">Translate the Page</button>
-            <button id="analyzeButton">Analyze the Article</button>
-            <button id="reviewButton">Conclude the Review</button>
-            <!--TODO: Maybe more buttons?-->
+            <div id="translateContainer">
+                <div id="translateButtonContainer">
+                    <div id="translateButton">
+                    <img src="/assets/language.png" alt="icon">
+                    </div>
+                </div>
+                <p>Translate</p>
+            </div>
+
+            <div id="analysisContainer">
+                <div id="analysisButtonContainer">
+                    <div id="analysisButton">
+                    <img src="/assets/thinking.png" alt="icon">
+                    </div>
+                </div>
+                <p>Analyze</p>
+            </div>
         </div>
         <p id="copyright">For OSU HackAI 2025. Copyright &copy; 2025 JustEnoughReading</p>
     </div>
 
     <div id="concludingProcess">
         <h1>TLDR!</h1>
+        <div class="typewriter"></div>
         <!--TODO: Make an animation here for the thinking or concluding page.-->
         <p>Concluding...</p>
         <p id="copyright">For OSU HackAI 2025. Copyright &copy; 2025 JustEnoughReading</p>
@@ -53,7 +76,6 @@
             <label for="targetLength">Target Length (words): </label>
             <input type="range" id="targetLength" min="50" max="1000" value="500">
             <span id="targetLengthValue">500</span>
-            <p id="copyright">For OSU HackAI 2025. Copyright &copy; 2025 JustEnoughReading</p>
         </div>
 
         <div id="translateConclusion">
