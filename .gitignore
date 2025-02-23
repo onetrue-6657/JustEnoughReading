@@ -1,0 +1,14 @@
+# In case anyone is working on a Mac (I am)
+.DS_Store
+
+# Config files for Python worker
+config.json
+
+# Python Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
