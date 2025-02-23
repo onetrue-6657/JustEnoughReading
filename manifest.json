@@ -9,5 +9,10 @@
     ],
     "action": {
         "default_popup": "popup.html"
+    },
+    "icons": {
+    "128": "assets/icon-128.png",
+    "256": "assets/icon-256.png",
+    "512": "assets/icon-512.png"
     }
 }
