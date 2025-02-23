@@ -59,10 +59,20 @@
         <p id="copyright">For OSU HackAI 2025. Copyright &copy; 2025 JustEnoughReading</p>
     </div>
 
-    <!--Shared by Analyze button and Review button-->
+    <div id="translatingProcess">
+        <h1>Translate! ¡Traducir! Übersetzen! 翻译！</h1>
+        <div class="typewriter">
+            <div class="typewriter-content"></div>
+        </div>
+        <p>Translating...</p>
+        <p id="copyright">For OSU HackAI 2025. Copyright &copy; 2025 JustEnoughReading</p>
+    </div>
+
     <div id="analyzingProcess">
         <h1>TL; DR!</h1>
-        <div class="typewriter"></div>
+        <div class="typewriter">
+            <div class="typewriter-content"></div>
+        </div>
         <p>Analyzing...</p>
         <p id="copyright">For OSU HackAI 2025. Copyright &copy; 2025 JustEnoughReading</p>
     </div>
@@ -73,11 +83,11 @@
         <div id="concludedContent"></div>
         <div id="targetLengthContainer">
             <label for="targetLength">Target Length (Max word counts): </label>
-            <input type="range" id="targetLength" min="50" max="1000" value="500">
+            <input type="range" id="targetLength" min="50" max="2000" value="500">
             <span id="targetLengthValue">500</span>
         </div>
 
-        <!-- <div id="translateConclusion">
+        <div id="translateConclusion">
             <p>Translate to: 
                 <select id="translateTo">
                     <option value="en">English</option>
@@ -88,38 +98,118 @@
                     <option value="de">Deutsch</option>
                 </select>
             </p>
-            <button>Translate</button>
-        </div> -->
+        </div>
 
-        <div id="concludedMenuButtons">
-            <button id="tryAgainButton">Try Again</button>
-            <button id="backButton">Back</button>
-            <!-- TODO: No idea whether we need a share feature. <button id="shareButton">Share</button> -->
+        <div id="buttonContainer">
+            <div id="refreshContainer">
+                <div id="refreshButtonContainer">
+                    <div id="refreshButton">
+                    <img src="/assets/refresh.png" alt="icon">
+                    </div>
+                </div>
+            </div>
+
+            <div id="translateSummaryContainer">
+                <div id="translateSummaryButtonContainer">
+                    <div id="translateSummaryButton">
+                    <img src="/assets/language-2.png" alt="icon">
+                    </div>
+                </div>
+            </div>
+
+            <div id="backContainer">
+                <div id="backButtonContainer">
+                    <div id="backButton">
+                    <img src="/assets/back.png" alt="icon">
+                    </div>
+                </div>
+            </div>
         </div>
         <p id="copyright">For OSU HackAI 2025. Copyright &copy; 2025 JustEnoughReading</p>
     </div>
 
-    <div id="translatingPage">
-        <h1>JustEnoughReading</h1>
-        <!--TODO: Make an animation here for the thinking or concluding page.-->
-        <p>Translating to <span id="translatingTo">English</span>...</p>
+    <div id="translateOptionsPage">
+        <h1>Translate Options</h1>
+        <p>Translate to: 
+            <select id="translateTo">
+                <option value="en">English</option>
+                <option value="zh">简体中文</option>
+                <option value="ja">日本語</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+                <option value="de">Deutsch</option>
+            </select>
+        </p>
+        <div id="buttonContainer">
+            <div id="translatePageContainer">
+                <div id="translatePageButtonContainer">
+                    <div id="translateSummaryButton">
+                    <img src="/assets/language-2.png" alt="icon">
+                    </div>
+                </div>
+            </div>
+
+            <div id="backContainer">
+                <div id="backButtonContainer">
+                    <div id="backButton">
+                    <img src="/assets/back.png" alt="icon">
+                    </div>
+                </div>
+            </div>
+        </div>
         <p id="copyright">For OSU HackAI 2025. Copyright &copy; 2025 JustEnoughReading</p>
     </div>
 
     <div id="translatedPage">
-        <h1>JustEnoughReading</h1>
-        <!--TODO: Add an icon here to show that the process has been completed ✅.-->
+        <h1>Page Translated</h1>
         <p>Translated to <span id="translatedTo">English</span>!</p>
-        <div id="translatedButtons">
-            <button id="switchButton">Switch to Original</button>
-            <button id="backButton">Back</button>
+        <div id="buttonContainer">
+            <div id="switchContainer">
+                <div id="switchButtonContainer">
+                    <div id="switchButton">
+                    <img src="/assets/refresh.png" alt="icon">
+                    </div>
+                </div>
+            </div>
+
+            <div id="backContainer">
+                <div id="backButtonContainer">
+                    <div id="backButton">
+                    <img src="/assets/back.png" alt="icon">
+                    </div>
+                </div>
+            </div>
         </div>
         <p id="copyright">For OSU HackAI 2025. Copyright &copy; 2025 JustEnoughReading</p>
     </div>
 
-    <div id="reviewAnalysisPage">
+    <div id="deepAnalysisPromptPage">
+        <h1>Page Analysis</h1>
+        <p>Simple prompt given, analysis received.</p>
+        <textarea id="analysisPrompt" placeholder="Write down your short and simple prompt here!"></textarea>
+        <div id="buttonContainer">
+            <div id="analyzeContainer">
+                <div id="analyzeButtonContainer">
+                    <div id="analyzeButton">
+                    <img src="/assets/thinking.png" alt="icon">
+                    </div>
+                </div>
+            </div>
+
+            <div id="backContainer">
+                <div id="backButtonContainer">
+                    <div id="backButton">
+                    <img src="/assets/back.png" alt="icon">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p id="copyright">For OSU HackAI 2025. Copyright &copy; 2025 JustEnoughReading</p>
+    </div>
+
+    <!-- <div id="reviewAnalysisPage">
         <h1>About this Product</h1>
-        <div id="reviewAnalysisContent"><!--TODO: Contents AI generates will be inserted here!--></div>
+        <div id="reviewAnalysisContent"></div>
         <div id="sentimentContainer">
             <label for="sentimentSlider">Sentiment:</label>
             <input type="range" id="sentimentSlider" min="-100" max="100" value="0">
@@ -128,11 +218,10 @@
                 <span>Negative</span>
                 <span>Neutral</span>
                 <span>Positive</span>
-                <!--TODO: The emoji should change when moving the container (by modifying popup.js). 
-                If possible change the container icon to emoji.-->
             </div>
         </div>
-        <!-- <div id="translateConclusion">
+
+        <div id="translateConclusion">
             <h2>Translate</h2>
             <p>Translate to: 
                 <select id="translateTo">
@@ -145,15 +234,14 @@
                 </select>
             </p>
             <button>Translate</button>
-        </div> -->
+        </div>
 
         <div id="concludedMenuButtons">
             <button id="tryAgainButton">Try Again</button>
             <button id="backButton">Back</button>
-            <!-- TODO: No idea whether we need a share feature. <button id="shareButton">Share</button> -->
             <p id="copyright">For OSU HackAI 2025. Copyright &copy; 2025 JustEnoughReading</p>
         </div>
-    </div>
+    </div> -->
 
     
     <script src="popup.js"></script>

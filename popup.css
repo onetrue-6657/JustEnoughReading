@@ -67,7 +67,7 @@ button {
 
 button:hover,
 select:hover {
-  background-color: #a6001d;
+  background-color: #0d4b71;
   transform: scale(1.05);
 }
 
@@ -81,7 +81,7 @@ select {
   color: #fff;
   margin-top: 8px;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  background-color: #a6001d;
+  background-color: #3fa4e1;
 }
 
 /* Start Menu */
@@ -121,7 +121,11 @@ select {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-#readingMenu img {
+#readingMenu img,
+#concludedMenu img,
+#translateOptionsPage img,
+#translatedPage img,
+#deepAnalysisPromptPage img {
   width: 100px;
   height: auto;
   margin: 10px 0;
@@ -197,6 +201,7 @@ select {
 
 #concludeButton img {
   display: block;
+  padding: 10px;
 }
 
 #translateButtonContainer {
@@ -289,8 +294,236 @@ select {
   padding: 10px;
 }
 
+/**/
+
+#refreshButtonContainer {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  line-height: 0;
+}
+
+#refreshButton {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  transition: all 0.5s ease;
+  display: inline-block;
+  line-height: 0;
+}
+
+#refreshButton::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(0deg, transparent, transparent 30%, #3fa4e1);
+  transform: rotate(-45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+#refreshButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #3fa4e1;
+}
+
+#refreshButton:hover::before {
+  opacity: 1;
+  transform: rotate(-45deg) translateY(100%);
+}
+
+#refreshButton img {
+  display: block;
+  padding: 10px;
+}
+
+#translateSummaryButtonContainer {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  line-height: 0;
+}
+
+#translateSummaryButton {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  transition: all 0.5s ease;
+  line-height: 0;
+  box-sizing: border-box;
+}
+
+#translateSummaryButton::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(0deg, transparent, transparent 30%, #3fa4e1);
+  transform: rotate(-45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+#translateSummaryButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #3fa4e1;
+}
+
+#translateSummaryButton:hover::before {
+  opacity: 1;
+  transform: rotate(-45deg) translateY(100%);
+}
+
+#translateSummaryButton img {
+  display: block;
+  padding: 10px;
+}
+
+#backButtonContainer {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  line-height: 0;
+}
+
+#backButton {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  transition: all 0.5s ease;
+  line-height: 0;
+  box-sizing: border-box;
+}
+
+#backButton::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(0deg, transparent, transparent 30%, #3fa4e1);
+  transform: rotate(-45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+#backButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #3fa4e1;
+}
+
+#backButton:hover::before {
+  opacity: 1;
+  transform: rotate(-45deg) translateY(100%);
+}
+
+#backButton img {
+  display: block;
+  padding: 10px;
+}
+
+#switchButtonContainer {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  line-height: 0;
+}
+
+#switchButton {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  transition: all 0.5s ease;
+  line-height: 0;
+  box-sizing: border-box;
+}
+
+#switchButton::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(0deg, transparent, transparent 30%, #3fa4e1);
+  transform: rotate(-45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+#switchButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #3fa4e1;
+}
+
+#switchButton:hover::before {
+  opacity: 1;
+  transform: rotate(-45deg) translateY(100%);
+}
+
+#switchButton img {
+  display: block;
+  padding: 10px;
+}
+
+#analyzeButtonContainer {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  line-height: 0;
+}
+
+#analyzeButton {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  transition: all 0.5s ease;
+  line-height: 0;
+  box-sizing: border-box;
+}
+
+#analyzeButton::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(0deg, transparent, transparent 30%, #3fa4e1);
+  transform: rotate(-45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+#analyzeButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #3fa4e1;
+}
+
+#analyzeButton:hover::before {
+  opacity: 1;
+  transform: rotate(-45deg) translateY(100%);
+}
+
+#analyzeButton img {
+  display: block;
+  padding: 10px;
+}
+
 /* Concluding Process and Analyzing Process */
 #concludingProcess,
+#translatingProcess,
 #analyzingProcess {
   display: flex;
   flex-direction: column;
@@ -306,7 +539,7 @@ select {
 }
 
 .typewriter {
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Monospace", Courier, monospace;
   font-size: 16px;
   line-height: 1.2;
   color: #fff;
@@ -333,14 +566,14 @@ select {
   width: 100%;
 }
 
-.typewriter::after {
+/* .typewriter::after {
   content: "";
   display: inline-block;
   width: 10px;
   height: 1em;
   background-color: currentColor;
   margin-left: 5px;
-  vertical-align: bottom;
+  vertical-align: top;
   animation: blink 1s step-end infinite;
 }
 
@@ -353,7 +586,7 @@ select {
   100% {
     opacity: 0;
   }
-}
+} */
 
 /* Conclusion Menu */
 #concludedMenu {
@@ -369,6 +602,7 @@ select {
 
 #concludedContent {
   font-size: 16px;
+  border-radius: 10px;
   color: #fff;
   background-color: #01011c;
   padding: 20px;
@@ -380,11 +614,57 @@ select {
   overflow: hidden;
 }
 
+input[type="range"] {
+  -webkit-appearance: none; /* 清除默认样式 */
+  width: 300px;
+  background: transparent;
+}
+
+/* 滑块轨道（Chrome、Safari） */
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  background: #ddd; /* 轨道背景色 */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* 滑块轨道（Firefox） */
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 8px;
+  background: #ddd;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* 滑块拇指（Chrome、Safari） */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #3fa4e1; /* 拇指颜色 */
+  margin-top: -6px; /* 调整拇指位置 */
+}
+
+/* 滑块拇指（Firefox） */
+input[type="range"]::-moz-range-thumb {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #3fa4e1;
+  border: none;
+}
+
 #translateConclusion button {
   width: 100%;
 }
 
 #concludedMenuButtons button {
+  /* display: flex;
+  align-items: space-between;
+  justify-content: center; */
   width: 100%;
 }
 
@@ -405,7 +685,7 @@ select {
   text-align: center;
 }
 
-#translateConclusion select {
+select {
   padding: 5px;
   margin-left: 5px;
 }
@@ -441,7 +721,42 @@ select {
   margin-top: 5px;
 }
 
+#reviewAnalysisContent {
+  font-size: 16px;
+  color: #fff;
+  background-color: #01011c;
+  padding: 20px;
+  border: 2px solid #3fa4e1;
+  width: 95%;
+  margin: 20px auto;
+  white-space: normal;
+  position: relative;
+  overflow: hidden;
+}
+
+#analysisPrompt {
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 10px;
+  width: 95%;
+  height: 100px;
+  border-radius: 10px;
+  padding: 5px 0 0 5px;
+  font-weight: 500;
+  border: 2px solid #3fa4e1;
+  color: #fff;
+  font-size: 0.9rem;
+  background-color: #01011c;
+}
+
 /* Translating Pgae */
+#readingMenu,
+#startMenu {
+  border: 1px solid #ccc;
+}
+
+#concludedMenu,
+#deepAnalysisPromptPage,
+#translateOptionsPage,
 #translatingPage,
 #translatedPage,
 #reviewAnalysisPage {
@@ -451,6 +766,7 @@ select {
   flex-direction: column;
   padding: 20px;
   background-color: #040426;
+  border: 1px solid #ccc;
   border-radius: 8px;
   margin: 20px auto;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);

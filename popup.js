@@ -6,18 +6,19 @@
     "concludedMenu",
     "translatingPage",
     "translatedPage",
+    "reviewingProcess",
     "analyzingProcess",
     "reviewAnalysisPage",
   ];
 
-  function showPage(pageId) {
-    pages.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.style.display = id === pageId ? "flex" : "none";
-      }
-    });
-  }
+  //   function showPage(pageId) {
+  //     pages.forEach((id) => {
+  //       const el = document.getElementById(id);
+  //       if (el) {
+  //         el.style.display = id === pageId ? "flex" : "none";
+  //       }
+  //     });
+  //   }
 
   window.addEventListener("DOMContentLoaded", function () {
     showPage("startMenu");
