@@ -1,6 +1,14 @@
 /* General Settings */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
+/** Color Codes: 
+  * #ba0c2f - Scarlet
+  * #a6001d - Dark Scarlet
+  * #57058c - Violet
+  * #FF5F05 - Orange
+  * #040426 - Deep Dark Blue
+  */
+
 * {
   margin: 0;
   padding: 0;
@@ -66,7 +74,7 @@ select {
   color: #fff;
   margin-top: 8px;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  background-color: #a7b1b7;
+  background-color: #a6001d;
 }
 
 /* Start Menu */
@@ -83,9 +91,14 @@ select {
 }
 
 #startMenu img {
-  width: 150px;
+  width: 40%;
   height: auto;
-  margin: 20px 0;
+  margin: 20px 20px;
+}
+
+#startMenu button {
+  width: 40%;
+  margin-top: 20px;
 }
 
 /* Reading Menu */
@@ -105,6 +118,14 @@ select {
   width: 100px;
   height: auto;
   margin: 10px 0;
+  background-color: #ffffff;
+  transition: background-color 0.3s ease;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+#readingMenu img:hover {
+  background-color: #5e5c5c;
 }
 
 #readingMenu button {
@@ -117,8 +138,36 @@ select {
   align-items: center;
 }
 
-/* Concluding Process */
-#concludingProcess {
+#translateButton {
+  background-color: #57058c;
+}
+
+#translateButton:hover {
+  background-color: #290342;
+}
+
+#analyzeButton {
+  background-color: #ba0c2f;
+}
+
+#analyzeButton:hover {
+  background-color: #7a0017;
+}
+
+#reviewButton {
+  background-color: #ff5f05;
+}
+
+#reviewButton:hover {
+  background-color: #6b250a;
+}
+
+/* Concluding Process and Analyzing Process */
+#concludingProcess,
+#analyzingProcess {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   padding: 20px;
   background-color: #040426;

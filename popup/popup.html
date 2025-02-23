@@ -12,6 +12,7 @@
         <p>Welcome to Just Enough Reading Chrome plugin!</p>
         <img src="/assets/JER.png" id="logo" alt="logo">
         <button id="actionButton">Click Me to Start!</button>
+        <p id="copyright">For OSU HackAI 2025. Copyright &copy; 2025 JustEnoughReading</p>
     </div>
 
     <div id="readingMenu">
@@ -20,19 +21,30 @@
         <p>Click to Conclude!</p>
 
         <div id="moreFeatures">
-            <button>Translate</button>
-            <button>Analyze</button>
-            <button>Review</button>
+            <button id="translateButton">Translate the Page</button>
+            <button id="analyzeButton">Analyze the Article</button>
+            <button id="reviewButton">Conclude the Review</button>
             <!--TODO: Maybe more buttons?-->
         </div>
+        <p id="copyright">For OSU HackAI 2025. Copyright &copy; 2025 JustEnoughReading</p>
     </div>
 
     <div id="concludingProcess">
         <h1>TLDR!</h1>
         <!--TODO: Make an animation here for the thinking or concluding page.-->
         <p>Concluding...</p>
+        <p id="copyright">For OSU HackAI 2025. Copyright &copy; 2025 JustEnoughReading</p>
     </div>
 
+    <!--Shared by Analyze button and Review button-->
+    <div id="analyzingProcess">
+        <h1>TLDR!</h1>
+        <!--TODO: Make an animation here for the thinking or concluding page.-->
+        <p>Analyzing...</p>
+        <p id="copyright">For OSU HackAI 2025. Copyright &copy; 2025 JustEnoughReading</p>
+    </div>
+
+    <!--Shared by Analyze result and Conclude result-->
     <div id="concludedMenu">
         <h1>About this Page</h1>
         <div id="concludedContent"><!--TODO: Contents AI generates will be inserted here!--></div>
@@ -41,6 +53,7 @@
             <label for="targetLength">Target Length (words): </label>
             <input type="range" id="targetLength" min="50" max="1000" value="500">
             <span id="targetLengthValue">500</span>
+            <p id="copyright">For OSU HackAI 2025. Copyright &copy; 2025 JustEnoughReading</p>
         </div>
 
         <div id="translateConclusion">
@@ -62,22 +75,25 @@
             <button id="tryAgainButton">Try Again</button>
             <!-- TODO: No idea whether we need a share feature. <button id="shareButton">Share</button> -->
         </div>
+        <p id="copyright">For OSU HackAI 2025. Copyright &copy; 2025 JustEnoughReading</p>
     </div>
 
     <div id="translatingPage">
         <h1>JustEnoughReading</h1>
         <!--TODO: Make an animation here for the thinking or concluding page.-->
         <p>Translating to <span id="translatingTo">English</span>...</p>
+        <p id="copyright">For OSU HackAI 2025. Copyright &copy; 2025 JustEnoughReading</p>
     </div>
 
     <div id="translatedPage">
         <h1>JustEnoughReading</h1>
         <!--TODO: Add an icon here to show that the process has been completed ✅.-->
-        <p>Translated to <span id="translatedTo">English</span>:</p>
+        <p>Translated to <span id="translatedTo">English</span>!</p>
         <div id="translatedButtons">
             <button id="switchButton">Switch to Original</button>
             <button id="backButton">Back</button>
         </div>
+        <p id="copyright">For OSU HackAI 2025. Copyright &copy; 2025 JustEnoughReading</p>
     </div>
 
     <div id="reviewAnalysisPage">
@@ -108,17 +124,18 @@
                 </select>
             </p>
             <button>Translate</button>
+            <p id="copyright">For OSU HackAI 2025. Copyright &copy; 2025 JustEnoughReading</p>
         </div>
 
         <div id="concludedMenuButtons">
             <button id="backButton">Back</button>
             <button id="tryAgainButton">Try Again</button>
             <!-- TODO: No idea whether we need a share feature. <button id="shareButton">Share</button> -->
+            <p id="copyright">For OSU HackAI 2025. Copyright &copy; 2025 JustEnoughReading</p>
         </div>
     </div>
 
-    <p id="copyright">For OSU HackAI 2025. Copyright &copy; 2025 JustEnoughReading</p>
-
+    
     <script src="popup.js"></script>
 </body>
 </html>
