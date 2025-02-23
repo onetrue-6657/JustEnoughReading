@@ -12,7 +12,7 @@
   ];
 
   const originalLanguage = navigator.language || navigator.userLanguage;
-  const newLanguage = "";
+  const newLanguage = document.getElementById("translateTo").value;
 
   const targetLengthSlider = document.getElementById("targetLength");
   const targetLengthValue = document.getElementById("targetLengthValue");
@@ -22,14 +22,14 @@
     });
   }
 
-  //   function showPage(pageId) {
-  //     pages.forEach((id) => {
-  //       const el = document.getElementById(id);
-  //       if (el) {
-  //         el.style.display = id === pageId ? "flex" : "none";
-  //       }
-  //     });
-  //   }
+  function showPage(pageId) {
+    pages.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.style.display = id === pageId ? "flex" : "none";
+      }
+    });
+  }
 
   window.addEventListener("DOMContentLoaded", function () {
     showPage("startMenu");
@@ -46,7 +46,7 @@
     const concludeButton = document.getElementById("concludeButton");
     if (concludeButton) {
       concludeButton.addEventListener("click", async function () {
-        showPage("concludingProcess");
+        showPage("analyzingProcess");
 
         // 获取当前 Tab 的 URL
         let [tab] = await chrome.tabs.query({
@@ -107,9 +107,11 @@
       });
     }
 
+    // Send original and new language values to Flask server.
     // TODO - TranslateOptionsPage => TranslatedPage
     const translatePageButton = document.getElementById("translatePageButton");
 
+    // Send original and new language values to Flask server.
     // TODO - TranslatedPage => TranslatingProcess => TranslatedPage (Original)
     const switchButton = document.getElementById("switchButton");
 
@@ -129,16 +131,204 @@
       });
     });
 
-    // TODO - ConcludedMenu => AnalyzingProcess => ConcludedMenu
+    // ✅ ConcludedMenu => AnalyzingProcess => ConcludedMenu
     const refreshButton = document.getElementById("refreshButton");
+    if (refreshButton) {
+      refreshButton.addEventListener("click", async function () {
+        showPage("analyzingProcess");
 
+        const suggestedLength = Number(
+          document.getElementById("targetLengthValue").textContent
+        );
+
+        let minLength, maxLength;
+
+        if (suggestedLength > 1950) {
+          maxLength = 2000;
+          minLength = suggestedLength - 50;
+        } else if (suggestedLength < 100) {
+          maxLength = suggestedLength + 50;
+          minLength = 50;
+        } else {
+          maxLength = suggestedLength + 50;
+          minLength = suggestedLength - 50;
+        }
+
+        let [tab] = await chrome.tabs.query({
+          active: true,
+          currentWindow: true,
+        });
+        if (!tab || !tab.url) {
+          alert("Not able to access URL of current page.");
+          return;
+        }
+
+        try {
+          const response = await fetch(
+            "http://64.227.2.159:8001/crawl_and_summarize",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                url: tab.url,
+                minLength: minLength,
+                maxLength: maxLength,
+              }),
+            }
+          );
+
+          const data = await response.json();
+
+          if (data.error) {
+            document.getElementById(
+              "concludedContent"
+            ).innerHTML = `<p style="color:red">❌ Error: ${data.error}</p>`;
+          } else {
+            document.getElementById("concludedContent").innerHTML = `
+                <h2>${data.title}</h2>
+                <p><strong>Main Topics:</strong> ${data.main_topics.join(
+                  ", "
+                )}</p>
+                <p><strong>Summary:</strong> ${data.summary}</p>
+                <p><strong>Key Facts:</strong></p>
+                <ul>${data.key_facts
+                  .map((fact) => `<li>${fact}</li>`)
+                  .join("")}</ul>
+              `;
+          }
+        } catch (error) {
+          document.getElementById(
+            "concludedContent"
+          ).innerHTML = `<p style="color:red">❌ Request Failed: ${error}</p>`;
+        }
+
+        showPage("concludedMenu");
+      });
+    }
+
+    // Send original language and new language values to Flask server.
     // TODO - ConcludedMenu => TranslatingProcess => ConcludedMenu
     const translateSummaryButton = document.getElementById(
       "translateSummaryButton"
     );
+    if (translateSummaryButton) {
+      translateSummaryButton.addEventListener("click", async function () {
+        showPage("translatingProcess");
 
+        let [tab] = await chrome.tabs.query({
+          active: true,
+          currentWindow: true,
+        });
+        if (!tab || !tab.url) {
+          alert("Not able to access URL of current page.");
+          return;
+        }
+
+        // 发送请求到 Flask 服务器
+        try {
+          const response = await fetch(
+            "http://64.227.2.159:8001/crawl_and_summarize",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                url: tab.url,
+                originalLanguage: originalLanguage,
+                newLanguage: newLanguage,
+              }),
+            }
+          ); // We are going to suggest GPT to generate a new summary within the targeted length range.
+
+          const data = await response.json();
+
+          if (data.error) {
+            document.getElementById(
+              "concludedContent"
+            ).innerHTML = `<p style="color:red">❌ Error: ${data.error}</p>`;
+          } else {
+            document.getElementById("concludedContent").innerHTML = `
+                      <h2>${data.title}</h2>
+                      <p><strong>Main Topics:</strong> ${data.main_topics.join(
+                        ", "
+                      )}</p>
+                      <p><strong>Summary:</strong> ${data.summary}</p>
+                      <p><strong>Key Facts:</strong></p>
+                      <ul>${data.key_facts
+                        .map((fact) => `<li>${fact}</li>`)
+                        .join("")}</ul>
+                    `;
+          } // TODO: Language change here?
+        } catch (error) {
+          document.getElementById(
+            "concludedContent"
+          ).innerHTML = `<p style="color:red">❌ Request Failed: ${error}</p>`;
+        }
+
+        // 显示总结页面
+        showPage("concludedMenu");
+      });
+    }
+
+    // Send a request with url and prompt value.
     // TODO - DeepAnalysisPromptPage => AnalyzingProcess => ConcludedMenu
     const analyzeButton = document.getElementById("analyzeButton");
+    const analyzePrompt = document.getElementById("analysisPrompt").value;
+    if (analyzeButton) {
+      translateSummaryButton.addEventListener("click", async function () {
+        showPage("analyzingProcess");
+
+        let [tab] = await chrome.tabs.query({
+          active: true,
+          currentWindow: true,
+        });
+        if (!tab || !tab.url) {
+          alert("Not able to access URL of current page.");
+          return;
+        }
+
+        // 发送请求到 Flask 服务器
+        try {
+          const response = await fetch(
+            "http://64.227.2.159:8001/crawl_and_summarize",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                url: tab.url,
+                analyzePrompt: analyzePrompt,
+              }),
+            }
+          ); // We are going to suggest GPT to generate a new summary within the targeted length range.
+
+          const data = await response.json();
+
+          if (data.error) {
+            document.getElementById(
+              "concludedContent"
+            ).innerHTML = `<p style="color:red">❌ Error: ${data.error}</p>`;
+          } else {
+            document.getElementById("concludedContent").innerHTML = `
+                          <h2>${data.title}</h2>
+                          <p><strong>Main Topics:</strong> ${data.main_topics.join(
+                            ", "
+                          )}</p>
+                          <p><strong>Summary:</strong> ${data.summary}</p>
+                          <p><strong>Key Facts:</strong></p>
+                          <ul>${data.key_facts
+                            .map((fact) => `<li>${fact}</li>`)
+                            .join("")}</ul>
+                        `;
+          }
+        } catch (error) {
+          document.getElementById(
+            "concludedContent"
+          ).innerHTML = `<p style="color:red">❌ Request Failed: ${error}</p>`;
+        }
+
+        // 显示总结页面
+        showPage("concludedMenu");
+      });
+    }
 
     gsap.registerPlugin(TextPlugin);
 
