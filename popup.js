@@ -3,13 +3,24 @@
     "startMenu",
     "readingMenu",
     "concludingProcess",
-    "concludedMenu",
-    "translatingPage",
-    "translatedPage",
-    "reviewingProcess",
+    "translatingProcess",
     "analyzingProcess",
-    "reviewAnalysisPage",
+    "concludedMenu",
+    "translateOptionsPage",
+    "translatedPage",
+    "deepAnalysisPromptPage",
   ];
+
+  const originalLanguage = navigator.language || navigator.userLanguage;
+  const newLanguage = "";
+
+  const targetLengthSlider = document.getElementById("targetLength");
+  const targetLengthValue = document.getElementById("targetLengthValue");
+  if (targetLengthSlider && targetLengthValue) {
+    targetLengthSlider.addEventListener("input", (event) => {
+      targetLengthValue.textContent = event.target.value;
+    });
+  }
 
   //   function showPage(pageId) {
   //     pages.forEach((id) => {
@@ -23,6 +34,7 @@
   window.addEventListener("DOMContentLoaded", function () {
     showPage("startMenu");
 
+    // ✅ StartMenu => MainMenu (readingMenu)
     const actionButton = document.getElementById("actionButton");
     if (actionButton) {
       actionButton.addEventListener("click", function () {
@@ -30,6 +42,7 @@
       });
     }
 
+    // ✅ MainMenu => ConcludingProcess => ConcludedMenu
     const concludeButton = document.getElementById("concludeButton");
     if (concludeButton) {
       concludeButton.addEventListener("click", async function () {
@@ -86,16 +99,29 @@
       });
     }
 
-    const analysisButton = document.getElementById("analysisButton");
-    if (analysisButton) {
-      analysisButton.addEventListener("click", function () {
-        showPage("analyzingProcess");
-        setTimeout(function () {
-          showPage("reviewAnalysisPage");
-        }, 2000);
+    // ✅ MainMenu => TranslateOptionsPage
+    const translateButton = document.getElementById("translateButton");
+    if (translateButton) {
+      translateButton.addEventListener("click", function () {
+        showPage("translateOptionsPage");
       });
     }
 
+    // TODO - TranslateOptionsPage => TranslatedPage
+    const translatePageButton = document.getElementById("translatePageButton");
+
+    // TODO - TranslatedPage => TranslatingProcess => TranslatedPage (Original)
+    const switchButton = document.getElementById("switchButton");
+
+    // ✅ MainMenu => deepAnalysisPromptPage
+    const analysisButton = document.getElementById("analysisButton");
+    if (analysisButton) {
+      analysisButton.addEventListener("click", function () {
+        showPage("deepAnalysisPromptPage");
+      });
+    }
+
+    // ✅ ConcludedMenu/TranslateOptionsPage/TranslatedPage/DeepAnalysisPromptPage => MainMenu
     const backButtons = document.querySelectorAll("#backButton");
     backButtons.forEach(function (button) {
       button.addEventListener("click", function () {
@@ -103,12 +129,16 @@
       });
     });
 
-    const tryAgainButton = document.getElementById("tryAgainButton");
-    if (tryAgainButton) {
-      tryAgainButton.addEventListener("click", function () {
-        showPage("concludedMenu");
-      });
-    }
+    // TODO - ConcludedMenu => AnalyzingProcess => ConcludedMenu
+    const refreshButton = document.getElementById("refreshButton");
+
+    // TODO - ConcludedMenu => TranslatingProcess => ConcludedMenu
+    const translateSummaryButton = document.getElementById(
+      "translateSummaryButton"
+    );
+
+    // TODO - DeepAnalysisPromptPage => AnalyzingProcess => ConcludedMenu
+    const analyzeButton = document.getElementById("analyzeButton");
 
     gsap.registerPlugin(TextPlugin);
 
