@@ -28,7 +28,11 @@ Copyright: For OSU HackAI 2025. Copyright &copy; 2025 JustEnoughReading
 
 ## **Our Team**
 
-Zheng Ni ([o-v-o](https://o-v-o.xyz/)) - from the Ohio State University \
-Rocky Fang - from the Ohio State University \
-Mumu Li (n3xta) - from New York University \
-Allen Wu (Windsun) - from University of Illinois Urbana-Champaign
+Zheng Ni ([o-v-o](https://o-v-o.xyz/)) - from the Ohio State University - Front-end \
+Rocky Fang - from the Ohio State University - Front-end \
+Mumu Li (n3xta) - from New York University - Back-end \
+Allen Wu (Windsun) - from University of Illinois Urbana-Champaign - Back-end
+
+## **Deficits**
+
+Unfortunately, there are still some back-end works not completed yet. We will implement them in the future, but feel free to use the features that are available currently!
