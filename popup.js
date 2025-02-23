@@ -35,7 +35,7 @@
         showPage("concludingProcess");
         setTimeout(function () {
           showPage("concludedMenu");
-        }, 2000);
+        }, 15000);
       });
     }
 
