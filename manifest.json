@@ -1,0 +1,13 @@
+{
+    "manifest_version": 3,
+    "name": "Just Enough Reading",
+    "version": "1.0",
+    "description": "A Chrome extension for enhancing reading experience.",
+    "permissions": [
+        "activeTab",
+        "storage"
+    ],
+    "action": {
+        "default_popup": "popup.html"
+    }
+}
